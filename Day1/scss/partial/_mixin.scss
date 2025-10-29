@@ -1,0 +1,16 @@
+@mixin flex-center{
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+}
+
+@mixin text-center{
+    text-align: center;
+}
+
+@mixin icons-section-content{
+    gap:144px;
+    @include flex-center;
+    @include text-center;
+    padding: 24px 32px;
+}

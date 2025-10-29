@@ -1,0 +1,265 @@
+@import 'partial/variable';
+@import 'partial/mixin';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $base-font-family;
+}
+
+.nav {
+    width: 100%;
+    padding: 22px 0;
+    background: $bg-gray;
+}
+
+.container {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+button {
+    height: 40px;
+    width: 91px;
+    border: none;
+    border-radius: 6px;
+    background-color: $text-color;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.btn-primary{
+    background: transparent;
+    color: $text-color;
+}
+
+.btn-secondary{
+    background-color: $color-primary;
+}
+
+.display-center{
+    @include flex-center;
+}
+
+.nav-list{
+    list-style: none;
+    @include flex-center;
+    gap: 50px;
+}
+
+
+
+// hero section
+.section-bg-color{
+    background: $bg-gray;
+}
+
+.hero-container{
+    @include flex-center;
+    height: 276px;
+    width: 100%;
+    gap: 104px;
+    padding-top: 96px;
+    padding-bottom: 96px;
+}
+
+.fontsize{
+    font-size: $heading-primary;
+    font-weight: 600;
+    line-height: 76px;
+}
+
+.span-text{
+    color: $color-primary;
+}
+
+
+.font-hero-content{
+    font-size: 16px;
+    margin-top: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    padding-bottom: 16px;
+}
+
+.text-center{
+    @include text-center;
+}
+
+.padding-top-40{
+    padding-top: 40px;
+}
+
+.pt-8{
+    padding-top: 8px;
+}
+
+.pt-16{
+    padding-top:16px;
+}
+
+.content-text-color{
+    color:$content-primary-color;
+}
+
+// section 3
+.section-3-icons-gap{
+    @include flex-center;
+    gap:136px;
+}
+
+.pb-40{
+    padding-bottom: 40px;
+}
+
+.font-hero-section-3{
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 600;
+}
+
+.pb-16{
+    padding-bottom:16px;
+}
+
+// section icons
+
+.gap-144{
+    gap: 144px;
+}
+
+.padding-icons-content{
+    padding: 8px 13.5px;
+}
+
+.icons-section-container{
+    @include icons-section-content;
+}
+
+.gap-49{
+    gap:49px;
+}
+
+.padding-42-5{
+    padding:42.5px;
+}
+
+.gap-32{
+    display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 16px 84px;
+}
+
+//section-5
+.gap-8{
+    gap: 8px;
+}
+
+.content-with-icons{
+    @include flex-center;
+    align-items: start;
+    flex-direction: column;
+}
+
+.section-5-padding{
+    padding:64px 144px;
+}
+
+.gap-40{
+    gap: 40px;
+}
+
+.grid-gapping-section-list{
+    @include flex-center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.gap-6{
+    gap: 6px;
+}
+
+.section5-list-icons-content{
+    padding: 6px 16px;
+}
+
+.section5-heading-3{
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+// section 6
+.section6-name-title-font-size{
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 800;
+}
+
+.pl-8{
+    padding: 8px;
+}
+
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+    top: 180px;
+    @include text-center;
+    width: 317px;
+    height: 176px;
+    margin: 0 auto;
+    background:$bg-gray;
+    left: 9px;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 2px 2px 10px #000;
+}
+
+.section6-padding-content-between{
+    padding: 8px 77px 8px 109px;
+    margin-top: 16px;
+}
+.padding-botttom-40{
+    padding-bottom: 40px;
+}
+
+.margin-top-40{
+    margin-top: 130px;
+}
+
+.btn-size{
+    height: 52px;
+    width: 178px;
+}
+
+.section-8-font-size{
+    font-size: 64px;
+    line-height: 76px;
+    font-weight: 600;
+}
+
+.footer-background{
+    background-color: #000;
+    color: white;
+}
+
+.flex-col{
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pr-60{
+    padding-right: 60px;
+}
+
+.list-item-style{
+    list-style: none;
+    padding: 6px;
+}
