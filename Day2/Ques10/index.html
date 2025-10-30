@@ -9,7 +9,7 @@
 
 <body>
     <div style="display: flex; justify-content: center; align-items: center;">
-        <button style="padding: 10px 30px;" id="addMark">Add</button>
+        <button style="padding: 10px 30px;" id="addMark">Add Students</button>
     </div>
     <div style="display: flex; align-items: center; justify-content: center;">
         <table  border="1" id="studentDetails">
@@ -31,7 +31,7 @@
 </body>
 <script>
     var addMark = document.getElementById("addMark");
-    var studentDetail=document.getElementById('studentDetails')
+    var studentDetail=document.getElementById('studentDetails');
     var arr= JSON.parse(localStorage.getItem("studentDetails")) || [] 
     function displayData() {
             var tbody = document.querySelector('table tbody');
