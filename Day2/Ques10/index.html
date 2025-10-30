@@ -8,10 +8,14 @@
 </head>
 
 <body>
-    <button id="addMark">Add</button>
-    <table border="1" id="studentDetails">
-        <tr>
-            <th>Name</th>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <button style="padding: 10px 30px;" id="addMark">Add</button>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <table  border="1" id="studentDetails">
+        <thead>
+            <tr>
+                <th>Name</th>
             <th>Subject1</th>
             <th>Subject2</th>
             <th>Subject3</th>
@@ -19,26 +23,36 @@
             <th>Subject5</th>
             <th>Total Mark</th>
             <th>Avg Mark</th>
-        </tr>
+            </tr>
+        </thead>
+        <tbody></tbody>
     </table>
+    </div>
 </body>
 <script>
     var addMark = document.getElementById("addMark");
     var studentDetail=document.getElementById('studentDetails')
     var arr= JSON.parse(localStorage.getItem("studentDetails")) || [] 
     function displayData() {
-            arr.forEach(student => {
-                var row = studentDetail.insertRow();
-                row.insertCell(0).textContent = student.name;
-                row.insertCell(1).textContent = student.subject1;
-                row.insertCell(2).textContent = student.subject2;
-                row.insertCell(3).textContent = student.subject3;
-                row.insertCell(4).textContent = student.subject4;
-                row.insertCell(5).textContent = student.subject5;
-                row.insertCell(6).textContent = student.TotalMark;
-                row.insertCell(7).textContent = student.avgmark.toFixed(2);
-            });
-        }
+            var tbody = document.querySelector('table tbody');
+            tbody.innerHTML = " ";
+
+            arr.forEach(person => {
+                var row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${person.name}</td>
+                    <td>${person.subject1}</td>
+                    <td>${person.subject2}</td>
+                    <td>${person.subject3}</td>
+                    <td>${person.subject4}</td>
+                    <td>${person.subject5}</td>
+                    <td>${person.TotalMark}</td>
+                    <td>${person.avgmark}</td>
+                `
+                tbody.appendChild(row);
+            })
+    }
 
     addMark.addEventListener('click', () => {
         var studentName = prompt('Enter Name');
@@ -56,8 +70,11 @@
         var obj={name:studentName,subject1:Subject1,subject2:Subject2,subject3:Subject3,subject4:Subject4,subject5:Subject5,TotalMark:sum,avgmark:avgMark}
         arr.push(obj);
         localStorage.setItem("studentDetails",JSON.stringify(arr));
+        displayData();
     })
-    displayData();
+
+    window.addEventListener('DOMContentLoaded',displayData)
+    
 </script>
 
 </html>
