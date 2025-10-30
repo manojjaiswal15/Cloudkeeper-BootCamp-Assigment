@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ques10</title>
+</head>
+
+<body>
+    <button id="addMark">Add</button>
+    <table border="1" id="studentDetails">
+        <tr>
+            <th>Name</th>
+            <th>Subject1</th>
+            <th>Subject2</th>
+            <th>Subject3</th>
+            <th>Subject4</th>
+            <th>Subject5</th>
+            <th>Total Mark</th>
+            <th>Avg Mark</th>
+        </tr>
+    </table>
+</body>
+<script>
+    var addMark = document.getElementById("addMark");
+    var studentDetail=document.getElementById('studentDetails')
+    var arr= JSON.parse(localStorage.getItem("studentDetails")) || [] 
+    function displayData() {
+            arr.forEach(student => {
+                var row = studentDetail.insertRow();
+                row.insertCell(0).textContent = student.name;
+                row.insertCell(1).textContent = student.subject1;
+                row.insertCell(2).textContent = student.subject2;
+                row.insertCell(3).textContent = student.subject3;
+                row.insertCell(4).textContent = student.subject4;
+                row.insertCell(5).textContent = student.subject5;
+                row.insertCell(6).textContent = student.TotalMark;
+                row.insertCell(7).textContent = student.avgmark.toFixed(2);
+            });
+        }
+
+    addMark.addEventListener('click', () => {
+        var studentName = prompt('Enter Name');
+        var Subject1 = parseInt(prompt("enter Marks 1st Subject"));
+        var Subject2 = parseInt(prompt("enter Marks 2nd Subject"));
+        var Subject3 = parseInt(prompt("enter Marks 3rd Subject"));
+        var Subject4 = parseInt(prompt("enter Marks 4th Subject"));
+        var Subject5 = parseInt(prompt("enter Marks 5th Subject"));
+         if (!studentName || isNaN(Subject1) || isNaN(Subject2) || isNaN(Subject3) || isNaN(Subject4) || isNaN(Subject5)) {
+            alert("Please fill all details correctly.");
+            return;
+        }
+        var sum =  Subject1 + Subject2 + Subject3 + Subject4 + Subject5;
+        var avgMark = parseFloat(sum / 5);
+        var obj={name:studentName,subject1:Subject1,subject2:Subject2,subject3:Subject3,subject4:Subject4,subject5:Subject5,TotalMark:sum,avgmark:avgMark}
+        arr.push(obj);
+        localStorage.setItem("studentDetails",JSON.stringify(arr));
+    })
+    displayData();
+</script>
+
+</html>
