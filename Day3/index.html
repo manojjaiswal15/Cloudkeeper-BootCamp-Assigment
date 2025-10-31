@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3 assigment</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;" id="Alert-price"></h1>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 40px;" id="contain"></div>
+</body>
+<script>
+    (function () {
+        var contain = document.getElementById('contain');
+        var container1 = document.createElement('div');
+        var alertMsg = document.getElementById('Alert-price')
+        container1.style.display = 'flex'
+        container1.style.gap = "20px"
+        // Ques 3
+        Product.prototype.getDiscountedPrice = function (percent) {
+            return this.price - this.price * (percent / 100);
+        }
+        // Ques2
+        function Product(title, price, cat, img) {
+            this.title = title;
+            this.price = price;
+            this.cat = cat;
+            this.img = img;
+        }
+
+        // Ques 6
+        function myMax(arr) {
+            let maxi = arr[0];
+            for (var i = 1; i < arr.length; i++) {
+                if (maxi < arr[i]) {
+                    maxi = arr[i];
+                }
+            }
+            return maxi;
+        }
+        // Ques1
+        var AllProduct = [
+            new Product("Phone", 20000, "Electronic", "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?cs=srgb&dl=pexels-fotios-photos-1092644.jpg&fm=jpgg"),
+            new Product("Dress", 2000, "Clothes", "https://www.shutterstock.com/image-vector/red-dress-thin-shoulder-straps-600nw-1772609000.jpg"),
+            new Product("Toy", 5000, "Toy", "https://m.media-amazon.com/images/I/61paoQad7gL.jpg"),
+            new Product("Nike Shoes", 5000, "Shoes", "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8fDA%3D&fm=jpg&q=60&w=3000")
+        ]
+
+        // Ques 6
+        var prices = AllProduct.map(p => p.price)
+        var pricesList = myMax.call(AllProduct, prices);
+        alertMsg.innerText = `price of costliest product is ${pricesList}`
+
+        AllProduct.map(item => {
+            var currentDiv = document.createElement('div')
+            var btnEle = document.createElement('button')
+            btnEle.style.width = '120px';
+            btnEle.style.height = '30px';
+            btnEle.textContent = 'get Discount';
+            currentDiv.style.border = '1px solid black';
+            currentDiv.style.padding = '10px';
+            currentDiv.style.margin = '10px';
+            currentDiv.style.width = '300px';
+            currentDiv.style.textAlign = 'center';
+            currentDiv.style.borderRadius = "10px";
+            currentDiv.innerHTML = `
+        <img style="width:300px;" src=${item.img} />
+     <h2>Product Name :- ${item.title} </h2>
+     <h2>Price :- ${item.price} </h2>
+     <h2>Category :- ${item.cat} </h2>
+    `;
+            btnEle.addEventListener('click', () => {
+                var discounted = item.getDiscountedPrice(20)
+                alert(`Discounted Price of ${item.title} is ₹${discounted}`);
+            })
+            currentDiv.appendChild(btnEle);
+            // Ques5
+            currentDiv.addEventListener("mouseover", () => {
+                currentDiv.style.scale = "1.1"
+                currentDiv.style.background = "skyblue"
+            })
+            currentDiv.addEventListener("mouseleave", () => {
+                currentDiv.style.scale = "1"
+                currentDiv.style.background = "transparent"
+            })
+            container1.appendChild(currentDiv)
+        })
+        contain.appendChild(container1);
+    })();
+</script>
+
+</html>
