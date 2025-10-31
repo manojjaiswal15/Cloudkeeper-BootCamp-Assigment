@@ -67,9 +67,10 @@
             currentDiv.style.borderRadius = "10px";
             currentDiv.innerHTML = `
         <img style="width:300px;" src=${item.img} />
-     <h2>Product Name :- ${item.title} </h2>
-     <h2>Price :- ${item.price} </h2>
-     <h2>Category :- ${item.cat} </h2>
+        <h2>Product Name :- ${item.title} </h2>
+        <h2>Price :- ${item.price} </h2>
+        <h2>Product Name :- ${item.title} </h2>
+        <h2>Category :- ${item.cat} </h2>
     `;
             btnEle.addEventListener('click', () => {
                 var discounted = item.getDiscountedPrice(20)
@@ -80,10 +81,12 @@
             currentDiv.addEventListener("mouseover", () => {
                 currentDiv.style.scale = "1.1"
                 currentDiv.style.background = "skyblue"
+                currentDiv.style.boxShadow='10px 10px 30px black'
             })
             currentDiv.addEventListener("mouseleave", () => {
                 currentDiv.style.scale = "1"
                 currentDiv.style.background = "transparent"
+                currentDiv.style.boxShadow=''
             })
             container1.appendChild(currentDiv)
         })
