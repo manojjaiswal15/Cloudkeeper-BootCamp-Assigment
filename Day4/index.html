@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day4 Assigment</title>
+</head>
+
+<body>
+
+    <script>
+        // Ques1
+        const add = (a, b) => a + b;
+        console.log(add(1, 2));
+
+        // Ques2
+        function greet(name, message = "Welcome!") {
+            console.log(`${message} ${name}`)
+        }
+        greet("manoj");
+
+        // Ques3
+        function formatString(name, age) {
+            return `Hello, my name is ${name} and I am ${age} years old.`;
+        }
+        console.log(formatString("manoj", 24));
+
+        // Ques4
+        const person = {
+            name: 'Alice',
+            age: 25,
+            address: {
+                city: 'New York',
+                country: 'NY'
+            }
+        };
+        function extract(person) {
+            const { name, age, address: { city } } = person;
+            console.log(`${name} lives in ${city}.`)
+        }
+        extract(person)
+
+        // Ques5
+        function sumAll(...arr) {
+            return arr.reduce((sum, ele) => sum += ele, 0);
+        }
+        console.log(sumAll(1, 2, 3, 4, 5))
+
+        // Ques6
+        function filterEvens(arr) {
+            return arr.filter((ele) => (ele % 2 == 0))
+        }
+        console.log(filterEvens([1, 2, 3, 4, 5, 6]))
+
+        // Ques7
+        function doubleValues(arr) {
+            return arr.map(ele => ele * 2)
+        }
+        console.log(doubleValues([1, 2, 3, 4]))
+
+        // Ques8
+        function findMax(arr) {
+            return Math.max(...arr)
+        }
+        console.log(findMax([1, 6, 5, 4, 20]))
+
+        //    Ques9
+        const data = [
+            {
+                name: "Bob",
+                age: 24
+            },
+            {
+                name: "Alice",
+                age: 21
+            }
+        ]
+        function ExtractData(data) {
+            const [data1, data2] = data;
+            return `${data2.name}’s age is ${data2.age}.`
+        }
+        console.log(ExtractData(data))
+
+        // Ques10
+       const obj1= [{
+                "id": 1,
+                "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+                "price": 109.95,
+                "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+                "category": "men's clothing",
+                "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+                "rating": {
+                    "rate": 3.9,
+                    "count": 120
+                }
+            }]
+
+        function Manipulation(){
+            const [data]=obj1
+            let arr=[]
+            const {id,title,rating:{rate},rating:{count}}=data;
+            arr.push({id,title,rate,count})
+            console.log(arr)
+        }
+        Manipulation()
+
+
+        //Ques11
+        const fun = (name = "abc") => {
+            if (name) {
+                console.log("if", name);
+            } else {
+                console.log("else", name);
+            }
+        };
+
+        fun("");  //ans is else
+
+        // Ques12
+        const obj = { a: 1, b: { c: 2 } };
+        function  deepClone(obj){
+            let newobj=JSON.parse(JSON.stringify(obj))
+            return newobj;
+        }
+        let newobj=deepClone(obj)
+        newobj.b.c=44;
+        console.log(obj.b.c)
+
+        // Ques13
+        const flattenArray=(arr)=>{
+            let res=[]
+            for(let val of arr){
+                if(Array.isArray(val)){
+                    res=res.concat(flattenArray(val));
+                }else{
+                    res.push(val);
+                }
+            }
+            return res;
+        }
+
+        console.log(flattenArray([1, [2, [3, [4, 5]]]]))
+    </script>
+</body>
+
+</html>
