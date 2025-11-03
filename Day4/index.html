@@ -128,11 +128,11 @@
         console.log(obj.b.c)
 
         // Ques13
+        let res=[]
         const flattenArray=(arr)=>{
-            let res=[]
             for(let val of arr){
                 if(Array.isArray(val)){
-                    res=res.concat(flattenArray(val));
+                    flattenArray(val);
                 }else{
                     res.push(val);
                 }
