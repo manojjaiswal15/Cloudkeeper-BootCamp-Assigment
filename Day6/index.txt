@@ -1,0 +1,37 @@
+#github Assignment
+
+Q1:
+ssh-keygen -t ed25519 -C "mj370207@gmail.com"
+cat ~/.ssh/id_ed25519.pub
+
+Q2:
+creating in github respos and respos name is githubPractice
+
+Q3:
+git clone https://github.com/manojjaiswal15/githubPractice.git
+
+Q4:
+git add test.txt
+git commit -m "test.txt add"
+git push origin -u main
+
+Q5:
+git branch "f1"
+git branch "f2"
+
+
+Q6:
+git checkout f1
+abc.txt   adding text "Change made in branch f1"
+git add .
+git commit -m "f1"
+
+git checkout f2
+abc.txt   adding text "Different change made in branch f2"
+git add .
+git commit -m "f2"
+
+git merge f1     now its merge occur then im check what is add in and ignore then commit
+
+
+Q7:

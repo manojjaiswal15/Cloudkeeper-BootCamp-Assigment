@@ -1,0 +1,73 @@
+#Q1
+ ps aux --sort=-%mem | head -n 2
+ kill 2022
+
+#Q2
+ sudo adduser devops
+ su - devops | whoami
+ sudo usermod -aG sudo devops
+
+#Q3
+ssh shreyash-shrivasta@10.1.221.43
+mkdir -p abc shreyash-shrivasta@10.1.221.43 /home/shreyash-shrivasta/Downloads
+scp shreyash-shrivasta@10.1.221.43 /home/shreyash-shrivasta/Downloads/abc/abc.txt
+
+#Q4
+ps au | grep *java*
+
+#Q5
+ssh-keygen -t rsa -b 4096 -C "first key pair"  first genarate the key public and private
+ssh-copy-id navneet-tiwari@10.1.210.42
+ssh 'navneet-tiwari@10.1.210.42'
+
+
+#Q6
+grep -i "error"  /var/log/syslog > erorrs_found.txt
+
+#Q7
+ls -l /etc | grep ".conf$" | sort > conf_list.txt
+
+
+#Q8
+cut -d : -f 7 /etc/passwd | sort -u | uniq > shell_count.txt
+
+#Q9
+vi demo.txt
+//insert and append 
+i :- hello    //im using for inserting the content
+a :- hellod   // a is append the content 
+dd :- hello    // dd is delete the line of content
+p :- hello hellopasting   //p is used for pasting content
+cntl+r :- hello
+:wq :- hello
+
+#Q10
+sudo passwd
+sudo shutdown
+
+#Q11
+tar -cvf send_file.txxt.tar send_file.txxt   creating the zip send_file
+scp send_file.txxt.tar navneet-tiwari@10.1.210.42:/home/navneet-tiwari/Documents/send_file.txxt.tar   sending the file to navneet 
+ssh navneet-tiwari@10.1.210.42
+tar -x send_file_txxt_tar
+
+
+#Q12
+//sql
+sudo apt install mysql-server 
+
+//docker
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+
+//postman
+sudo snap install postman
+
+//dbeaver
+sudo snap install dbeaver-ce
+

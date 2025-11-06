@@ -1,0 +1,5 @@
+hellod
+
+
+Explore vi/vim for  Creating a text file. Understand cursor movement, switching input mode (append, insert etc), deleting command, pasting content, undo , redo ,search , save and quit operations in vim. 
+
