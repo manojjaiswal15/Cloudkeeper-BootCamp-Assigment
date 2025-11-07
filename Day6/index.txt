@@ -35,3 +35,26 @@ git merge f1     now its merge occur then im check what is add in and ignore the
 
 
 Q7:
+when two branches have developed different commit histories after their common ancestor
+
+Q8:
+git init :- its used for initialized the respos and this make from scratch.
+git clone:- Creates a copy of an existing Git repository
+
+Q9:
+git branch:- its used for create,delete,rename for branch and they dont switch for used
+git checkout:- Switches to another branch or commit and creating branch
+
+Q10:
+git fetch :- Downloads new data (commits, branches, tags) from remote and they dont change the code in local machine
+git pull :- Fetches and then merges changes from remote into your current branch
+
+Q11:
+
+
+Q12:
+git reset :- Moves the branch pointer to an earlier commit
+git revert :- Creates a new commit that undoes changes from a previous commit
+
+Q13:
+git branch -d f2
