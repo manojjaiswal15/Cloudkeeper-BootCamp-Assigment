@@ -1,0 +1,201 @@
+Q1. what is the java collection Framework?explain its advantages?
+
+ans: The Java Collection Framework is a set of classes and interfaces in Java that helps you store and manage groups of objects (data) easily.
+    they include :- List,Map,Queue,Set.
+
+   Advantages:-
+   1.You don’t need to write complex code for storing or managing data just use built-in methods.
+   2. Collections can grow or shrink dynamically unlike arrays, whose size is fixed.
+   3, You get ready-made methods for sorting, searching, and shuffling data.
+
+Q2. List the differences between vector,arraylist,linkedlist and hashset?
+
+ans: 1.Vector: It is used to create a dynamic array that can grow or shrink in size automatically. it allows only one thread to access it at a time, which makes it thread-safe but also slower in performance compared to other collections like ArrayList.
+     2. ArrayList: It is used to create a dynamic array that can grow or shrink in size automatically. It is not synchronized, so multiple threads can access it at the same time — this makes it faster but not thread-safe.
+     3. linkedlist: It is used to store elements in a doubly linked list. It maintains insertion order and allows duplicate elements.
+     4. HashSet: It is used to store elements in a set form, where no duplicate elements are allowed. It is based on a hash table, which makes it very fast for searching, adding, and removing elements.
+
+
+Q3. find the first non-repeating character?
+
+import java.util.*;
+public class FindoutChar {
+    public static void main(String[] args) {
+        String demo="abcdabce";
+        char res=' ';
+        HashMap<Character,Integer> mp=new HashMap<Character, Integer>();
+        for(char i : demo.toCharArray()){
+            mp.put(i,mp.getOrDefault(i,0)+1);
+        }
+        for(Map.Entry<Character,Integer> e : mp.entrySet()){
+            if(e.getValue()==1){
+                res=e.getKey();
+                break;
+            }
+        }
+        System.out.println(res);
+    }
+}
+
+
+Q4. Given an array of integers and a target sum, return the indices of the two numbers that add up to the target? 
+
+import java.util.ArrayList;
+
+public class Arraytwosum {
+    public static void main(String[] args) {
+        ArrayList<Integer> arr=new ArrayList<>();
+        arr.add(5);
+        arr.add(10);
+        arr.add(15);
+        arr.add(20);
+        arr.add(25);
+       try{
+           int target=15;
+           for(int i=0;i<arr.toArray().length;i++){
+               for(int j=i+1;j<arr.toArray().length;j++){
+                   if(arr.get(i)+arr.get(j)==target){
+                       System.out.println(arr.get(i)+" "+arr.get(j));
+                   }
+               }
+           }
+       }catch(Exception e){
+           System.out.println(e.getMessage());
+       }
+    }
+}
+
+
+Q5. You are given two sorted ArrayLists<Integer>. Merge them into a single sorted list.?
+ 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Arraymerg {
+    public static void main(String[] args) {
+        ArrayList<Integer> arr1=new ArrayList<>(Arrays.asList(1,2,3,4,5));
+        ArrayList<Integer> arr2=new ArrayList<>(Arrays.asList(6,7,8,9,0,10));
+        for(int i=0;i<arr2.toArray().length;i++){
+            arr1.add(arr2.get(i));
+        }
+        Collections.sort(arr1);
+        System.out.println(arr1);
+    }
+}
+
+
+Q6. Write a Java program with two threads: Thread 1 prints table of number 2. Thread 2 prints table of number 4. hreads should be synced to print output one by one.
+
+import java.util.concurrent.SynchronousQueue;
+
+class Multi implements Runnable{
+      boolean shared=true;
+    synchronized void print2(int n) {
+            try{
+
+                    for(int i=1;i<=10;i++){
+                        while(!shared){
+                            wait();
+                        }
+                        System.out.println(n+" x "+i+" = "+n*i);
+                        shared=false;
+                        notify();
+                    }
+            }catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+  }
+    synchronized void print4(int n) {
+        try{
+                for(int i=1;i<=10;i++){
+                    while(shared){
+                        wait();
+                    }
+                    System.out.println(n+" x "+i+" = "+n*i);
+                    shared=true;
+                    notify();
+                }
+        }catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    @Override
+    public void run() {
+    }
+}
+
+public class ThrealMul {
+    public static void main(String[] args){
+        Multi m1=new Multi();
+            Thread th1=new Thread(()->{m1.print2(2);});
+            Thread th2=new Thread(()->{m1.print4(4);});
+            th1.start();
+            th2.start();
+    }
+}
+
+
+
+Q7. Write above program using ExecutorService?
+
+ans: 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+class Table implements Runnable{
+    private boolean shared=true;
+    public synchronized void table2(int n) throws InterruptedException{
+        for(int i=1;i<=10;i++){
+            while(shared){
+                wait();
+            }
+            System.out.println(n+" x "+i+" = "+n*i);
+            shared=!shared;
+            notify();
+        }
+    }
+
+
+    public synchronized void table4(int n) throws InterruptedException{
+        for(int i=1;i<=10;i++){
+            while(!shared){
+                wait();
+            }
+            System.out.println(n+" x "+i+" = "+n*i);
+            shared=!shared;
+            notify();
+        }
+    }
+    public void run(){
+        if(Thread.currentThread().getName().equals("pool-1-thread-1")){
+            try{
+                table2(2);
+            }catch(InterruptedException i){
+                System.out.println(i);
+            }
+        }else{
+            try{
+                table4(4);
+            }catch(InterruptedException i){
+                System.out.println(i);
+            }
+        }
+    }
+
+}
+public class tableexcute {
+    public static void main(String[] args) {
+        ExecutorService ex=Executors.newFixedThreadPool(2);
+        Table t=new Table();
+        ex.execute(t);
+        ex.execute(t);
+        ex.shutdown();
+    }
+}
+
+
+
+
