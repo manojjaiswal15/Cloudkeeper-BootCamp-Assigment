@@ -5,7 +5,11 @@ class MethodChainJava {
         System.out.println("Result: " + result);
     }
     void m2(){
+        try{
         m3();
+}catch(Exception e){
+            throw e;
+        }
     }
     void m1(){
         try{
