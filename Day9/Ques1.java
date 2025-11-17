@@ -4,7 +4,7 @@ class SharedData{
     Queue<Integer> sharedBuffer = new LinkedList<>();
     boolean shared=true;
 
-    synchronized void Consumer() throws InterruptedException {
+    synchronized void consumer() throws InterruptedException {
         while (shared && !sharedBuffer.isEmpty()) {
             System.out.println("Consume = " + sharedBuffer.poll());
         }
@@ -15,7 +15,7 @@ class SharedData{
          }
     }
 
-    synchronized void Producer() throws InterruptedException {
+    synchronized void producer() throws InterruptedException {
         while (!shared && sharedBuffer.size() < 5) {
             for (int i = 0; i < 5; i++) {
                 sharedBuffer.add(i);
@@ -37,7 +37,7 @@ public class ProductAndConsumer {
         Thread consumerThread = new Thread(() -> {
             try {
                 while (true) {
-                    sd.Consumer();
+                    sd.consumer();
                     Thread.sleep(300);
                 }
             } catch (InterruptedException e) {}
@@ -46,7 +46,7 @@ public class ProductAndConsumer {
         Thread producerThread = new Thread(() -> {
             try {
                 while (true) {
-                    sd.Producer();
+                    sd.producer();
                     Thread.sleep(300);
                 }
             } catch (InterruptedException e) {}

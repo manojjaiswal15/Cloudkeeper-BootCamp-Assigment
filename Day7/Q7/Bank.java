@@ -10,6 +10,11 @@ class InvalidWithDrawal extends Exception{
     }
 }
 
+
+//BankCAccount
+//depositMoney
+//
+
 class BankAccount{
     private final int accountNumber;
     private final String holderName;
@@ -21,7 +26,7 @@ class BankAccount{
         this.balance = balance;
         totalAccounts+=1;
     }
-     void Deposit(double addBalance) throws InvalidDeposit{
+     void deposit(double addBalance) throws InvalidDeposit{
         if(addBalance<=0){
             throw new InvalidDeposit("Invalid Deposit Money");
         }
@@ -57,7 +62,7 @@ public class bank {
         try{
             BankAccount acc1 = new BankAccount(1001, "Manoj", 5000);
             BankAccount acc2 = new BankAccount(1002, "Priya", 10000);
-            acc1.Deposit(-500);
+            acc1.deposit(-500);
             acc1.withdraw(5000);
             acc1.getBalance();
         }catch(Exception e){

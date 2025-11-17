@@ -29,7 +29,7 @@ class Employee{
     public double calculateSalary(){
         return salary;
     }
-    public void Show(){
+    public void show(){
         System.out.println("ID: "+id+" EmpName: "+name+" Salary: "+salary);
     }
     @Override
@@ -69,7 +69,7 @@ public class EmpSystem {
         PartTimeEmployee p1=new PartTimeEmployee(2,"manojpart",8,2000);
         System.out.println("Full Emp:- "+f1.calculateSalary());
         System.out.println("Part Emp:- "+ p1.calculateSalary());
-        f1.Show();
-        p1.Show();
+        f1.show();
+        p1.show();
     }
 }

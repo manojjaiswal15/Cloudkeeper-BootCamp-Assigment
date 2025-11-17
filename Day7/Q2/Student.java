@@ -2,12 +2,12 @@ class Student{
     int total=0;
     double avg=0;
     String name;
-    public void TotalMark(String name,int sub1,int sub2,int sub3){
+    public void totalMark(String name,int sub1,int sub2,int sub3){
         this.name=name;
         total= sub1+sub2+sub3;
-        Avg();
+        avg();
     }
-    public void Avg(){
+    public void avg(){
         avg= total/3;
         show();
     }
@@ -21,6 +21,6 @@ class Student{
 public class Q2 {
     public static void main(String []args){
        Student stu=new Student();
-       stu.TotalMark("Manoj",77,88,77);
+       stu.totalMark("Manoj",77,88,77);
     }
 }
